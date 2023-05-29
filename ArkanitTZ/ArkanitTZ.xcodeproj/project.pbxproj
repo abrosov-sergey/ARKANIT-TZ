@@ -11,6 +11,9 @@
 		639F5ACC2A252F6F00682386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639F5ACB2A252F6F00682386 /* Assets.xcassets */; };
 		639F5ACF2A252F6F00682386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639F5ACD2A252F6F00682386 /* LaunchScreen.storyboard */; };
 		639F5AD72A252FA800682386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F5AD62A252FA800682386 /* AppDelegate.swift */; };
+		639F5ADC2A2531C100682386 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 639F5ADB2A2531C100682386 /* Swinject */; };
+		639F5ADF2A25336200682386 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 639F5ADE2A25336200682386 /* SnapKit */; };
+		639F5AE22A25338500682386 /* AssemblyModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F5AE12A25338500682386 /* AssemblyModules.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,7 @@
 		639F5ACE2A252F6F00682386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		639F5AD02A252F6F00682386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		639F5AD62A252FA800682386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		639F5AE12A25338500682386 /* AssemblyModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyModules.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				639F5ADC2A2531C100682386 /* Swinject in Frameworks */,
+				639F5ADF2A25336200682386 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +58,11 @@
 		639F5AC12A252F6D00682386 /* ArkanitTZ */ = {
 			isa = PBXGroup;
 			children = (
+				639F5AE02A25337000682386 /* Assembly */,
+				639F5AE62A25343800682386 /* Services */,
+				639F5AE52A25342700682386 /* Extensions */,
+				639F5AE42A25341A00682386 /* Models */,
+				639F5AE32A25340900682386 /* DTO's */,
 				639F5AD82A25305D00682386 /* Modules */,
 				639F5ACB2A252F6F00682386 /* Assets.xcassets */,
 				639F5ACD2A252F6F00682386 /* LaunchScreen.storyboard */,
@@ -77,6 +88,42 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		639F5AE02A25337000682386 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				639F5AE12A25338500682386 /* AssemblyModules.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		639F5AE32A25340900682386 /* DTO's */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "DTO's";
+			sourceTree = "<group>";
+		};
+		639F5AE42A25341A00682386 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		639F5AE52A25342700682386 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		639F5AE62A25343800682386 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,6 +140,10 @@
 			dependencies = (
 			);
 			name = ArkanitTZ;
+			packageProductDependencies = (
+				639F5ADB2A2531C100682386 /* Swinject */,
+				639F5ADE2A25336200682386 /* SnapKit */,
+			);
 			productName = ArkanitTZ;
 			productReference = 639F5ABF2A252F6D00682386 /* ArkanitTZ.app */;
 			productType = "com.apple.product-type.application";
@@ -121,6 +172,10 @@
 				Base,
 			);
 			mainGroup = 639F5AB62A252F6D00682386;
+			packageReferences = (
+				639F5ADA2A2531C100682386 /* XCRemoteSwiftPackageReference "Swinject" */,
+				639F5ADD2A25336200682386 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 639F5AC02A252F6D00682386 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -148,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				639F5AD72A252FA800682386 /* AppDelegate.swift in Sources */,
+				639F5AE22A25338500682386 /* AssemblyModules.swift in Sources */,
 				639F5AC72A252F6D00682386 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +412,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		639F5ADA2A2531C100682386 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		639F5ADD2A25336200682386 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		639F5ADB2A2531C100682386 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 639F5ADA2A2531C100682386 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		639F5ADE2A25336200682386 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 639F5ADD2A25336200682386 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 639F5AB72A252F6D00682386 /* Project object */;
 }
