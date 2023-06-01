@@ -10,7 +10,7 @@ import Swinject
 
 @objc public class Assembly: NSObject {
   private static let assemblies: [Swinject.Assembly] = [
-    
+    SearchCityScreenAssembly(),
   ]
 
   private static let container = Container()
