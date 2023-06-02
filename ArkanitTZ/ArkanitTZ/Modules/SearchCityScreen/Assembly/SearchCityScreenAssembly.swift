@@ -15,11 +15,11 @@ final class SearchCityScreenAssembly: Swinject.Assembly {
     container.register(
       SearchCityScreenModule.self
     ) { resolver in
-//      let weatherService = resolver.resolve(WeatherService.self)
+      let weatherService = resolver.resolve(WeatherService.self)!
       
       let presenter = SearchCityScreenPresenter()
       let view = SearchCityScreenView(presenter: presenter)
-      let interactor = SearchCityScreenInteractor(presenter: presenter)
+      let interactor = SearchCityScreenInteractor(weatherService: weatherService, presenter: presenter)
       
       presenter.view = view
       presenter.interactor = interactor

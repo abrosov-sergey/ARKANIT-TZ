@@ -18,7 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
   ) -> Bool {
     window.backgroundColor = UIColor.white
-//    window.rootViewController = Assembly.resolver.resolve(SearchCityScreenModule.self)!
+    
+    let serv = Assembly.resolver.resolve(WeatherService.self)!
+    
+    serv.fetchWeatherByCityName(cityName: "London") { _, _ in
+      
+    } failed: { _ in
+      
+    }
+
+
     window.rootViewController = UINavigationController(rootViewController: Assembly.resolver.resolve(SearchCityScreenModule.self)!)
     window.makeKeyAndVisible()
     return true

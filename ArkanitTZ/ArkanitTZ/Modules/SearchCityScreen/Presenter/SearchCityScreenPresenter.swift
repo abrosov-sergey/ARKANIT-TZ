@@ -7,13 +7,27 @@
 
 import Foundation
 
+protocol SearchCityScreenPresenterViewInput {
+  func fetchWeather(cityName: String) -> CityInfoModel
+}
+
 // MARK: - SearchCityScreenPresenter
  
 final class SearchCityScreenPresenter {
   
   // MARK: - Properties
   
-  weak var view: SearchCityScreenView?
-  weak var router: SearchCityScreenRouter?
-  weak var interactor: SearchCityScreenInteractor?
+  var view: SearchCityScreenView?
+  var router: SearchCityScreenRouter?
+  var interactor: SearchCityScreenInteractorPresenterInput?
 }
+
+// MARK: - SearchCityScreenPresenterViewInput
+
+extension SearchCityScreenPresenter: SearchCityScreenPresenterViewInput {
+  func fetchWeather(cityName: String) -> CityInfoModel {
+    return interactor?.fetchWeather(cityName: cityName) ??
+           CityInfoModel(cityName: "cityName", weatherStatus: WeatherStatuses.emptyValue, temperature: "none")
+  }
+}
+

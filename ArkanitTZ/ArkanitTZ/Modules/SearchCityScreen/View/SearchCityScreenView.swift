@@ -14,7 +14,7 @@ final class SearchCityScreenView: UIViewController {
   
   // MARK: - Properties
   
-  private let presenter: SearchCityScreenPresenter
+  private let presenter: SearchCityScreenPresenterViewInput
   
   private let citySearchTextField: UISearchTextField = {
     let searchTextField = UISearchTextField()
@@ -28,6 +28,7 @@ final class SearchCityScreenView: UIViewController {
     searchTextField.textColor = .lightGray
     searchTextField.layer.cornerRadius = 15.0
     searchTextField.returnKeyType = .search
+    searchTextField.addTarget(SearchCityScreenView.self, action: #selector(searchTextFieldTapped), for: .editingDidEnd)
     return searchTextField
   }()
   
@@ -62,6 +63,11 @@ final class SearchCityScreenView: UIViewController {
     print("Pressed")
   }
   
+  @objc func searchTextFieldTapped() {
+    
+    presenter.fetchWeather(cityName: <#T##String#>)
+  }
+  
   // MARK: - Setup
   
   private func setupUI() {
@@ -84,10 +90,7 @@ final class SearchCityScreenView: UIViewController {
       NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 35.0)
     ]
     
-    
     navigationController.navigationBar.prefersLargeTitles = true
-//    navigationController.navigationBar.tintColor = .white
-//    navigationController.navigationBar.barTintColor = .white
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(rightBarItemPressed))
   }
   

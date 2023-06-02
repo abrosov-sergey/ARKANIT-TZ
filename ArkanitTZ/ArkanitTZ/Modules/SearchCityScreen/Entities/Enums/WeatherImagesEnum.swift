@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 enum WeatherStatuses {
+  case emptyValue
   case sunny
   case rainy
   case cloudy
   
   var weather: UIImage {
     switch self {
+    case .emptyValue: return UIImage()
     case .sunny: return UIImage(named: "Sunny") ?? UIImage()
     case .rainy: return UIImage(named: "Rainy") ?? UIImage()
     case .cloudy: return UIImage(named: "Cloudy") ?? UIImage()

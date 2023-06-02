@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct CityInfo {
+struct CityInfoModel {
   let cityName: String
   var weatherStatus: WeatherStatuses
-  var temperature: Int
+  var temperature: String
 }
