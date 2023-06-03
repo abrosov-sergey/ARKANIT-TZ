@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "storm-in-the-sea-with-sun-appearing-behind-the-clouds.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "storm-in-the-sea-with-sun-appearing-behind-the-clouds 1.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "storm-in-the-sea-with-sun-appearing-behind-the-clouds 2.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

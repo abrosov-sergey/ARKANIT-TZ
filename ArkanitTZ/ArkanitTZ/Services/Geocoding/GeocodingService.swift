@@ -89,7 +89,6 @@ extension GeocodingService: GeocodingServiceInput {
             return
           }
           
-          print(lat, lon)
           success("\(lat)", "\(lon)")
         } else {
           print("Data не пришла")

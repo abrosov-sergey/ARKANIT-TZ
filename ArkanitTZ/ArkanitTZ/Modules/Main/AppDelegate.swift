@@ -19,14 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     window.backgroundColor = UIColor.white
     
-    let serv = Assembly.resolver.resolve(WeatherService.self)!
-    
-    serv.fetchWeatherByCityName(cityName: "London") { _, _ in
-      
-    } failed: { _ in
-      
-    }
-
+//    let serv = Assembly.resolver.resolve(WeatherService.self)!
+//    print(InfoAboutAllCities.shared.allCities)
+//    var setOfStatuses = Set<String>()
+//    for i in InfoAboutAllCities.shared.allCities {
+//      serv.fetchWeatherByCityName(cityName: i.cityEn) { temp, status in
+//        setOfStatuses.insert(status)
+//      } failed: { _ in
+//
+//      }
+//    }
+//    print(setOfStatuses)
 
     window.rootViewController = UINavigationController(rootViewController: Assembly.resolver.resolve(SearchCityScreenModule.self)!)
     window.makeKeyAndVisible()

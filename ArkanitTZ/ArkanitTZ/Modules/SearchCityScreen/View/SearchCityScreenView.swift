@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol SearchCityScreenViewPresenterInput {
+  func tableViewReloadData() 
+}
+
 // MARK: - SearchCityScreenView
 
 final class SearchCityScreenView: UIViewController {
@@ -28,7 +32,7 @@ final class SearchCityScreenView: UIViewController {
     searchTextField.textColor = .lightGray
     searchTextField.layer.cornerRadius = 15.0
     searchTextField.returnKeyType = .search
-    searchTextField.addTarget(SearchCityScreenView.self, action: #selector(searchTextFieldTapped), for: .editingDidEnd)
+    searchTextField.addTarget(self, action: #selector(searchTextFieldEditingChanged), for: .editingChanged)
     return searchTextField
   }()
   
@@ -63,9 +67,13 @@ final class SearchCityScreenView: UIViewController {
     print("Pressed")
   }
   
-  @objc func searchTextFieldTapped() {
-    
-    presenter.fetchWeather(cityName: <#T##String#>)
+  @objc func searchTextFieldEditingChanged() {
+    for city in InfoAboutAllCities.shared.allCities {
+      if city.cityEn == citySearchTextField.text {
+        presenter.fetchWeather(cityName: citySearchTextField.text ?? "")
+        break
+      }
+    }
   }
   
   // MARK: - Setup
@@ -125,8 +133,7 @@ extension SearchCityScreenView: UITableViewDelegate, UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-//    presenter.fetchCitiesCount()
-    5
+    (presenter as! SearchCityScreenPresenter).listOfCities.count
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,12 +161,41 @@ extension SearchCityScreenView: UITableViewDelegate, UITableViewDataSource {
     cell.layer.borderWidth = 1.0
     cell.layer.cornerRadius = 15.0
     cell.clipsToBounds = true
-    cell.config(image: WeatherStatuses.cloudy.weather, cityName: "Moscow", temperature: "10°", statusWeather: "Cloudy")
+    
+    print(indexPath)
+    
+    let currentModel = (presenter as! SearchCityScreenPresenter).listOfCities[indexPath.section]
+    cell.config(
+      image: currentModel.weatherStatus.weather,
+      cityName: currentModel.cityName,
+      temperature: "\(currentModel.temperature)°",
+      statusWeather: "\(currentModel.weatherStatus)"
+    )
   
     return cell
   }
   
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+      return true
+  }
+
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+        print(indexPath.section)
+//        citiesTableView.deleteRows(at: [indexPath], with: .automatic)
+        presenter.removeCityByIndex(index: indexPath.section)
+      }
+  }
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("You tapped cell number \(indexPath.section).")
+  }
+}
+
+// MARK: - SearchCityScreenViewPresenterInput
+
+extension SearchCityScreenView: SearchCityScreenViewPresenterInput {
+  func tableViewReloadData() {
+    citiesTableView.reloadData()
   }
 }

@@ -82,7 +82,7 @@ extension WeatherService: WeatherServiceInput {
         do {
           if let data = data {
             let model = try JSONDecoder().decode(WeatherModel.self, from: data)
-            success("\(model.main.temp - self.fromKtoC)", model.weather[0].main)
+            success("\(Int(trunc(round(model.main.temp - self.fromKtoC))))", model.weather[0].main)
           } else {
             failed("Data не пришла")
           }
