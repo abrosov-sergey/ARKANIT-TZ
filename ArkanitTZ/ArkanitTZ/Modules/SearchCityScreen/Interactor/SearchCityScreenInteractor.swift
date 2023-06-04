@@ -35,7 +35,7 @@ extension SearchCityScreenInteractor: SearchCityScreenInteractorPresenterInput {
     var model = CityInfoModel(cityName: cityName, weatherStatus: WeatherStatuses.emptyValue, temperature: "none")
     
     weatherService.fetchWeatherByCityName(cityName: cityName) { temperature, weatherStatus in
-      DispatchQueue.main.async {
+      
         print(111, cityName, temperature, weatherStatus)
         
         model.temperature = temperature
@@ -50,7 +50,7 @@ extension SearchCityScreenInteractor: SearchCityScreenInteractorPresenterInput {
         case "Extreme": model.weatherStatus = .extreme
         default: model.weatherStatus = .clear
         }
-        
+      DispatchQueue.main.sync {
         self.presenter.addNewCity(model: model)
       }
     } failed: { message in

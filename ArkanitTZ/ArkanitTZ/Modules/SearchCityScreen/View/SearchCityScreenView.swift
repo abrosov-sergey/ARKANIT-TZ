@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
 protocol SearchCityScreenViewPresenterInput {
   func tableViewReloadData() 
@@ -45,6 +46,17 @@ final class SearchCityScreenView: UIViewController {
     return tableView
   }()
   
+  private var mainLoader: NVActivityIndicatorView = {
+    var loader = NVActivityIndicatorView(
+      frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0),
+      type: .ballBeat,
+      color: UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
+      padding: 0
+    )
+    loader.isHidden = false
+    return loader
+  }()
+  
   // MARK: - ViewController
   
   init(presenter: SearchCityScreenPresenter) {
@@ -70,7 +82,9 @@ final class SearchCityScreenView: UIViewController {
   @objc func searchTextFieldEditingChanged() {
     for city in InfoAboutAllCities.shared.allCities {
       if city.cityEn == citySearchTextField.text {
-        presenter.fetchWeather(cityName: citySearchTextField.text ?? "")
+        self.citySearchTextField.isEnabled = false
+        self.mainLoader.startAnimating()
+        self.presenter.fetchWeather(cityName: self.citySearchTextField.text ?? "")
         break
       }
     }
@@ -82,6 +96,7 @@ final class SearchCityScreenView: UIViewController {
     view.backgroundColor = .black
     view.addSubview(citySearchTextField)
     view.addSubview(citiesTableView)
+    view.addSubview(mainLoader)
     
     setupTableView()
     setupNavigationBar()
@@ -113,6 +128,10 @@ final class SearchCityScreenView: UIViewController {
       $0.top.equalTo(citySearchTextField.snp.bottom).offset(8.0)
       $0.left.right.equalTo(self.view.safeAreaLayoutGuide).inset(15.0)
       $0.bottom.equalToSuperview()
+    }
+    
+    mainLoader.snp.makeConstraints {
+      $0.center.equalToSuperview()
     }
   }
 }
@@ -196,6 +215,8 @@ extension SearchCityScreenView: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchCityScreenView: SearchCityScreenViewPresenterInput {
   func tableViewReloadData() {
+    mainLoader.stopAnimating()
+    citySearchTextField.isEnabled = true
     citiesTableView.reloadData()
   }
 }
