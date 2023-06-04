@@ -12,6 +12,7 @@ import Swinject
   private static let assemblies: [Swinject.Assembly] = [
     GeocodingServiceAssembly(),
     WeatherServiceAssembly(),
+    DetailedInfoScreenAssembly(),
     SearchCityScreenAssembly(),
   ]
 

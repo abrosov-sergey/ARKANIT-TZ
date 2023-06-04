@@ -20,9 +20,11 @@ final class SearchCityScreenAssembly: Swinject.Assembly {
       let presenter = SearchCityScreenPresenter()
       let view = SearchCityScreenView(presenter: presenter)
       let interactor = SearchCityScreenInteractor(weatherService: weatherService, presenter: presenter)
+      let router = SearchCityScreenRouter(view: view)
       
       presenter.view = view
       presenter.interactor = interactor
+      presenter.router = router
       
       return view
     }

@@ -10,6 +10,7 @@ import Foundation
 protocol SearchCityScreenPresenterViewInput {
   func fetchWeather(cityName: String)
   func removeCityByIndex(index: Int)
+  func showDetailedScreen(index: Int)
 }
 
 protocol SearchCityScreenPresenterInteractorInput {
@@ -24,7 +25,7 @@ final class SearchCityScreenPresenter {
   // MARK: - Properties
   
   var view: SearchCityScreenViewPresenterInput?
-  var router: SearchCityScreenRouter?
+  var router: SearchCityScreenRouterPresenterInput?
   var interactor: SearchCityScreenInteractorPresenterInput?
   
   var listOfCities = [CityInfoModel]() {
@@ -43,6 +44,10 @@ extension SearchCityScreenPresenter: SearchCityScreenPresenterViewInput {
   
   func removeCityByIndex(index: Int) {
     listOfCities.remove(at: index)
+  }
+  
+  func showDetailedScreen(index: Int) {
+    self.router?.showDetailedScreen(cityInfo: listOfCities[index])
   }
 }
 

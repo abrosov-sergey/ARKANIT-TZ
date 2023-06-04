@@ -200,13 +200,12 @@ extension SearchCityScreenView: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
-        print(indexPath.section)
-//        citiesTableView.deleteRows(at: [indexPath], with: .automatic)
         presenter.removeCityByIndex(index: indexPath.section)
       }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    presenter.showDetailedScreen(index: indexPath.section)
     print("You tapped cell number \(indexPath.section).")
   }
 }

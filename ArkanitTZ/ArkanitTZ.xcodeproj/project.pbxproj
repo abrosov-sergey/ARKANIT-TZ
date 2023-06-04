@@ -26,6 +26,10 @@
 		639F5AF72A25431000682386 /* SearchCityScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F5AF62A25431000682386 /* SearchCityScreenInteractor.swift */; };
 		639F5AFA2A25432000682386 /* SearchCityScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F5AF92A25432000682386 /* SearchCityScreenPresenter.swift */; };
 		639F5AFC2A25432B00682386 /* SearchCityScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F5AFB2A25432B00682386 /* SearchCityScreenRouter.swift */; };
+		63B1F8B72A2CBD9400C09274 /* DetailedInfoScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1F8B62A2CBD9400C09274 /* DetailedInfoScreenAssembly.swift */; };
+		63B1F8B92A2CBE2800C09274 /* DetailedInfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1F8B82A2CBE2800C09274 /* DetailedInfoScreenView.swift */; };
+		63B1F8BE2A2CBE4000C09274 /* DetailedInfoScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1F8BD2A2CBE4000C09274 /* DetailedInfoScreenPresenter.swift */; };
+		63B1F8C22A2CDAF900C09274 /* DetailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1F8C12A2CDAF900C09274 /* DetailedTableViewCell.swift */; };
 		63CF3C0E2A288AAE0086F254 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF3C0D2A288AAE0086F254 /* WeatherService.swift */; };
 		63CF3C122A288B700086F254 /* GeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF3C112A288B700086F254 /* GeocodingService.swift */; };
 		63CF3C142A288B900086F254 /* WeatherServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CF3C132A288B900086F254 /* WeatherServiceAssembly.swift */; };
@@ -52,6 +56,10 @@
 		639F5AF62A25431000682386 /* SearchCityScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityScreenInteractor.swift; sourceTree = "<group>"; };
 		639F5AF92A25432000682386 /* SearchCityScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityScreenPresenter.swift; sourceTree = "<group>"; };
 		639F5AFB2A25432B00682386 /* SearchCityScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityScreenRouter.swift; sourceTree = "<group>"; };
+		63B1F8B62A2CBD9400C09274 /* DetailedInfoScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoScreenAssembly.swift; sourceTree = "<group>"; };
+		63B1F8B82A2CBE2800C09274 /* DetailedInfoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoScreenView.swift; sourceTree = "<group>"; };
+		63B1F8BD2A2CBE4000C09274 /* DetailedInfoScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoScreenPresenter.swift; sourceTree = "<group>"; };
+		63B1F8C12A2CDAF900C09274 /* DetailedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTableViewCell.swift; sourceTree = "<group>"; };
 		63CF3C0D2A288AAE0086F254 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		63CF3C112A288B700086F254 /* GeocodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingService.swift; sourceTree = "<group>"; };
 		63CF3C132A288B900086F254 /* WeatherServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceAssembly.swift; sourceTree = "<group>"; };
@@ -121,13 +129,6 @@
 			path = Weather;
 			sourceTree = "<group>";
 		};
-		636B9B142A2A0225000A7337 /* Geocoding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Geocoding;
-			sourceTree = "<group>";
-		};
 		639F5AB62A252F6D00682386 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				639F5AE72A2534D300682386 /* SearchCityScreen */,
+				63B1F8AF2A2CBD2200C09274 /* DetailedInfoScreen */,
 				639F5AD92A25306C00682386 /* Main */,
 			);
 			path = Modules;
@@ -190,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				63547C972A2A492000EB6023 /* Cities */,
-				636B9B142A2A0225000A7337 /* Geocoding */,
 				636B9B132A2A021B000A7337 /* Weather */,
 				63CF3C1B2A28C76C0086F254 /* User */,
 			);
@@ -272,6 +273,41 @@
 			isa = PBXGroup;
 			children = (
 				639F5AF42A2542AC00682386 /* SearchCityScreenAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		63B1F8AF2A2CBD2200C09274 /* DetailedInfoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				63B1F8B52A2CBD5B00C09274 /* Assembly */,
+				63B1F8B42A2CBD5400C09274 /* View */,
+				63B1F8B22A2CBD4600C09274 /* Presenter */,
+			);
+			path = DetailedInfoScreen;
+			sourceTree = "<group>";
+		};
+		63B1F8B22A2CBD4600C09274 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				63B1F8BD2A2CBE4000C09274 /* DetailedInfoScreenPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		63B1F8B42A2CBD5400C09274 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63B1F8B82A2CBE2800C09274 /* DetailedInfoScreenView.swift */,
+				63B1F8C12A2CDAF900C09274 /* DetailedTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		63B1F8B52A2CBD5B00C09274 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				63B1F8B62A2CBD9400C09274 /* DetailedInfoScreenAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -392,7 +428,11 @@
 				639F5AFC2A25432B00682386 /* SearchCityScreenRouter.swift in Sources */,
 				639F5AFA2A25432000682386 /* SearchCityScreenPresenter.swift in Sources */,
 				63CF3C122A288B700086F254 /* GeocodingService.swift in Sources */,
+				63B1F8BE2A2CBE4000C09274 /* DetailedInfoScreenPresenter.swift in Sources */,
 				63CF3C0E2A288AAE0086F254 /* WeatherService.swift in Sources */,
+				63B1F8C22A2CDAF900C09274 /* DetailedTableViewCell.swift in Sources */,
+				63B1F8B92A2CBE2800C09274 /* DetailedInfoScreenView.swift in Sources */,
+				63B1F8B72A2CBD9400C09274 /* DetailedInfoScreenAssembly.swift in Sources */,
 				639F5AF22A253B2B00682386 /* SearchCityTableViewCell.swift in Sources */,
 				639F5AD72A252FA800682386 /* AppDelegate.swift in Sources */,
 				630DA7632A27747F0052688E /* WeatherImagesEnum.swift in Sources */,

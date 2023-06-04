@@ -35,9 +35,6 @@ extension SearchCityScreenInteractor: SearchCityScreenInteractorPresenterInput {
     var model = CityInfoModel(cityName: cityName, weatherStatus: WeatherStatuses.emptyValue, temperature: "none")
     
     weatherService.fetchWeatherByCityName(cityName: cityName) { temperature, weatherStatus in
-      
-        print(111, cityName, temperature, weatherStatus)
-        
         model.temperature = temperature
         
         switch weatherStatus {
